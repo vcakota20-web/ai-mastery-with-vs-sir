@@ -1,3 +1,7 @@
+/* =====================================================================
+   SITE_CONFIG — edit values here. Every page reads from this file, so a
+   change here (price, payment link, phone number) updates the whole site.
+   ===================================================================== */
 const SITE_CONFIG = {
   BOOK_TITLE: "Practical Guide to AI for Educators",
   BOOK_AUTHOR: "VS Sir (Vijay Kumar Sharma)",
@@ -23,11 +27,29 @@ const SITE_CONFIG = {
 };
 
 function trackEvent(name, params) {
-  try { if (window.gtag) { window.gtag("event", name, params || {}); } else { console.log("[track]", name, params || {}); } } catch(e) {}
+  if (window.gtag) { window.gtag("event", name, params || {}); }
+  else { console.log("[track]", name, params || {}); }
 }
+(function loadAnalytics() {
+  const id = SITE_CONFIG.GA_MEASUREMENT_ID;
+  if (!id) return;
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag("js", new Date());
+  window.gtag("config", id);
+})();
 
-function applyConfig() {
-  try {
+(function () {
+  function waLink(extra) {
+    const msg = encodeURIComponent(SITE_CONFIG.WHATSAPP_MESSAGE + (extra || ""));
+    return `https://wa.me/${SITE_CONFIG.WHATSAPP_NUMBER}?text=${msg}`;
+  }
+
+  function applyConfig() {
     document.querySelectorAll("[data-cfg]").forEach((el) => {
       const key = el.getAttribute("data-cfg");
       if (key === "PRICE_INR") el.textContent = "₹" + SITE_CONFIG.PRICE_INR;
@@ -44,14 +66,65 @@ function applyConfig() {
     });
     document.querySelectorAll("[data-cfg-whatsapp]").forEach((el) => {
       const extra = el.getAttribute("data-cfg-whatsapp") || "";
-      const msg = encodeURIComponent(SITE_CONFIG.WHATSAPP_MESSAGE + (extra ? " " + extra : ""));
-      el.setAttribute("href", "https://wa.me/" + SITE_CONFIG.WHATSAPP_NUMBER + "?text=" + msg);
+      el.setAttribute("href", waLink(extra ? " " + extra : ""));
     });
-  } catch(e) { console.error("Config apply error:", e); }
-}
+    document.querySelectorAll('[data-cfg-href="BOOK_PAYMENT_URL"]').forEach((el) => {
+      el.addEventListener("click", () => trackEvent("razorpay_click", { book: SITE_CONFIG.BOOK_TITLE }));
+    });
+    document.querySelectorAll("[data-cfg-whatsapp]").forEach((el) => {
+      el.addEventListener("click", () => trackEvent("whatsapp_click", { book: SITE_CONFIG.BOOK_TITLE }));
+    });
+    if (document.body.dataset.page === "success") {
+      trackEvent("purchase_thankyou_view", { book: SITE_CONFIG.BOOK_TITLE });
+    } else {
+      trackEvent("sales_page_view", { book: SITE_CONFIG.BOOK_TITLE });
+    }
+    initPayPal();
+  }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", applyConfig);
-} else {
-  applyConfig();
-}
+  function initPayPal() {
+    const mount = document.getElementById("paypal-button-container");
+    const fallback = document.getElementById("paypal-fallback");
+    if (!mount) return;
+    const clientId = SITE_CONFIG.PAYPAL_CLIENT_ID;
+    if (!clientId || clientId.indexOf("PASTE_") === 0) {
+      mount.style.display = "none";
+      if (fallback) fallback.style.display = "block";
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(clientId)}&currency=${encodeURIComponent(SITE_CONFIG.PAYPAL_CURRENCY)}`;
+    script.onload = () => {
+      if (!window.paypal) return;
+      window.paypal.Buttons({
+        style: { layout: "vertical", color: "gold", shape: "pill", label: "paypal" },
+        createOrder: function (data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              description: SITE_CONFIG.BOOK_TITLE,
+              amount: { value: String(SITE_CONFIG.PRICE_USD), currency_code: SITE_CONFIG.PAYPAL_CURRENCY }
+            }]
+          });
+        },
+        onApprove: function (data, actions) {
+          return actions.order.capture().then(function () {
+            trackEvent("paypal_success", { book: SITE_CONFIG.BOOK_TITLE });
+            window.location.href = SITE_CONFIG.SUCCESS_URL + "?via=paypal";
+          });
+        },
+        onClick: function () { trackEvent("paypal_click", { book: SITE_CONFIG.BOOK_TITLE }); },
+        onError: function (err) {
+          console.error("PayPal error:", err);
+          alert("Something went wrong with PayPal checkout. Please try again or contact support on WhatsApp.");
+        }
+      }).render("#paypal-button-container");
+    };
+    document.head.appendChild(script);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", applyConfig);
+  } else {
+    applyConfig();
+  }
+})();
