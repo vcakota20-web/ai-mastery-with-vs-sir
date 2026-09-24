@@ -1,7 +1,3 @@
-/* =====================================================================
-   SITE_CONFIG — edit values here. Every page reads from this file, so a
-   change here (price, payment link, phone number) updates the whole site.
-   ===================================================================== */
 const SITE_CONFIG = {
   BOOK_TITLE: "Practical Guide to AI for Educators",
   BOOK_AUTHOR: "VS Sir (Vijay Kumar Sharma)",
