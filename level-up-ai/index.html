@@ -17,12 +17,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="config.js"></script>
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2173221344074914');fbq('track','PageView');fbq('track','ViewContent',{content_name:'LEVEL UP AI',value:49,currency:'INR'});</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2173221344074914&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 
 <nav><div class="wrap">
   <a class="brand" href="#top">LEVEL UP AI</a>
-  <div class="links"><a href="#inside">What's inside</a><a href="#preview">Preview</a><a href="#author">Author</a><a href="#faq">FAQ</a></div>
+  <div class="links"><a href="#inside">What's inside</a><a href="#flip">Flip through</a><a href="#author">Author</a><a href="#faq">FAQ</a></div>
   <a class="btn btn-buy btn-small" data-buy href="#buy">Buy — <span data-price>₹49</span></a>
 </div></nav>
 
@@ -40,7 +43,8 @@
     </div>
     <div class="note"><span data-launch-only>🎉 Launch offer for our first buyers · </span>Instant PDF download after payment · Works on phone, tablet & computer</div>
     <div class="chips"><span class="chip">📖 100 pages</span><span class="chip">🗺 6 levels & 6 bosses</span><span class="chip">📐 6 blueprint diagrams</span><span class="chip">💛 Psychology tips on every page</span><span class="chip">🏆 Fillable certificate</span></div>
-    <p style="margin-top:18px"><a class="btn btn-ghost btn-small" data-sample href="assets/LEVEL_UP_AI_Free_Sample.pdf" target="_blank">📥 Read 14 pages FREE</a></p>
+    <p style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-ghost btn-small" href="#flip">📖 Flip through all 100 pages</a><a class="btn btn-ghost btn-small" data-sample href="assets/LEVEL_UP_AI_Free_Sample.pdf" target="_blank">📥 Free 14-page sample</a></p>
+    <div class="share"><span>Share with a parent:</span><a class="sh wa" data-share="wa" href="#">WhatsApp</a><a class="sh fb" data-share="fb" href="#">Facebook</a><a class="sh li" data-share="li" href="#">LinkedIn</a><a class="sh cp" data-share="copy" href="#">Copy link</a></div>
   </div>
 </div></header>
 
@@ -81,6 +85,20 @@
   <p style="text-align:center;margin-top:26px"><a class="btn btn-ghost" data-sample href="assets/LEVEL_UP_AI_Free_Sample.pdf" target="_blank">📥 Download the free 14-page sample</a></p>
 </div></section>
 
+<section id="flip" class="flip"><div class="wrap">
+  <h2 class="h">Flip through the whole book</h2>
+  <p class="sub">All 100 pages are shown below. <b>Pages 1–14 are free to read</b> — tap any of them to open the reader. Pages 15–100 unlock when you get the e-book.</p>
+  <div class="thumbs" id="thumbs"></div>
+  <p style="text-align:center;margin-top:26px"><a class="btn btn-buy" data-buy href="#buy">UNLOCK ALL 100 PAGES — <span data-price>₹49</span></a></p>
+</div></section>
+<div class="reader" id="reader">
+  <button class="rclose" aria-label="Close" onclick="closeReader()">✕</button>
+  <button class="rnav prev" aria-label="Previous page" onclick="turn(-1)">‹</button>
+  <div class="rstage"><img id="rimg" alt=""><div class="rlock" id="rlock"><div class="bang" style="font-size:40px">🔒 PAGE <span id="rno"></span> IS LOCKED</div><p>You've read the free pages! Get the full 100-page comic to keep reading.</p><a class="btn btn-buy" data-buy href="#buy">UNLOCK — <span data-price>₹49</span></a></div></div>
+  <button class="rnav next" aria-label="Next page" onclick="turn(1)">›</button>
+  <div class="rcount" id="rcount"></div>
+</div>
+
 <section class="author" id="author"><div class="wrap grid2">
   <img class="photo" src="assets/author.jpg" alt="Sushma Ma'am, author" width="500" height="500">
   <div>
@@ -106,6 +124,7 @@
       <li>Instant download after payment</li>
     </ul>
     <a class="btn btn-buy" data-buy href="#">BUY NOW — <span data-price>₹49</span></a>
+    <div class="share" style="justify-content:center;margin-top:14px"><span style="color:#555">Share:</span><a class="sh wa" data-share="wa" href="#">WhatsApp</a><a class="sh fb" data-share="fb" href="#">Facebook</a><a class="sh cp" data-share="copy" href="#">Copy link</a></div>
     <p class="note" style="margin-top:14px">Secure payment by Razorpay · UPI, cards, net banking & wallets</p>
   </div>
   <p style="margin-top:28px;opacity:.9">🏫 <b>Schools & coaching centres:</b> class licence at ₹29 per student (30+ students). <a data-wa="Hello! I am interested in a school licence for LEVEL UP AI." href="#" style="color:var(--y)">Ask on WhatsApp</a></p>
@@ -132,6 +151,31 @@
 <div class="lightbox" id="lb" onclick="this.style.display='none'"><img alt=""></div>
 <script>
 document.querySelectorAll('.previews img').forEach(i=>i.addEventListener('click',()=>{const lb=document.getElementById('lb');lb.querySelector('img').src=i.src;lb.querySelector('img').alt=i.alt;lb.style.display='flex';}));
+
+const FREE=14, TOTAL=100; let cur=1;
+const th=document.getElementById('thumbs');
+for(let p=1;p<=TOTAL;p++){const d=document.createElement('button');d.className='th'+(p>FREE?' locked':'');d.setAttribute('aria-label','Page '+p);
+ d.innerHTML=`<img loading="lazy" src="assets/pages/thumb-${String(p).padStart(3,'0')}.jpg" alt="Page ${p}"><span>${p}</span>`+(p>FREE?'<i>🔒</i>':'');
+ d.onclick=()=>openReader(p); th.appendChild(d);}
+function show(){const img=document.getElementById('rimg'),lock=document.getElementById('rlock');
+ document.getElementById('rcount').textContent='Page '+cur+' of '+TOTAL+(cur<=FREE?' · free preview':'');
+ if(cur<=FREE){img.src='assets/pages/page-'+String(cur).padStart(3,'0')+'.jpg';img.className='';lock.style.display='none';}
+ else{img.src='assets/pages/thumb-'+String(cur).padStart(3,'0')+'.jpg';img.className='blur';lock.style.display='flex';document.getElementById('rno').textContent=cur;}}
+function openReader(p){cur=p;show();document.getElementById('reader').style.display='flex';document.body.style.overflow='hidden';}
+function closeReader(){document.getElementById('reader').style.display='none';document.body.style.overflow='';}
+function turn(d){cur=Math.min(TOTAL,Math.max(1,cur+d));show();}
+document.addEventListener('keydown',e=>{if(document.getElementById('reader').style.display!=='flex')return;if(e.key==='ArrowRight')turn(1);if(e.key==='ArrowLeft')turn(-1);if(e.key==='Escape')closeReader();});
+let tx=null;const rs=document.querySelector('.rstage');rs.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});rs.addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)turn(dx<0?1:-1);tx=null;});
+// share
+const SURL=(typeof SITE_CONFIG!=='undefined'?SITE_CONFIG.SITE_URL:location.href);
+const STXT="LEVEL UP AI – a 100-page comic that teaches kids the Internet, AI & Cyber Safety. By Sushma Ma'am. ";
+document.querySelectorAll('[data-share]').forEach(a=>{const k=a.dataset.share;
+ if(k==='wa')a.href='https://wa.me/?text='+encodeURIComponent(STXT+SURL);
+ if(k==='fb')a.href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(SURL);
+ if(k==='li')a.href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(SURL);
+ if(k!=='copy'){a.target='_blank';a.rel='noopener';}
+ else a.onclick=e=>{e.preventDefault();(navigator.clipboard?navigator.clipboard.writeText(SURL):Promise.reject()).then(()=>{a.textContent='Copied ✓';setTimeout(()=>a.textContent='Copy link',2000)}).catch(()=>prompt('Copy this link:',SURL));};});
+document.querySelectorAll('[data-buy]').forEach(a=>a.addEventListener('click',()=>{if(window.fbq)fbq('track','InitiateCheckout',{value:49,currency:'INR'});}));
 </script>
 </body>
 </html>
