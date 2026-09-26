@@ -20,7 +20,7 @@ const SITE_CONFIG = {
   // Create TWO Razorpay Payment Pages/Links for this book and paste them here:
   //   1) ₹49 launch offer   2) ₹99 regular price
   // In each one, set the success / redirect URL to SUCCESS_URL below.
-  PAYMENT_URL_LAUNCH: "PASTE_RAZORPAY_49_LINK_HERE",
+  PAYMENT_URL_LAUNCH: "https://rzp.io/rzp/gsXcZlN",
   PAYMENT_URL_REGULAR: "PASTE_RAZORPAY_99_LINK_HERE",
   SUCCESS_URL: "https://vcakota20-web.github.io/ai-mastery-with-vs-sir/level-up-ai/success.html",
 
