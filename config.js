@@ -22,7 +22,7 @@ const SITE_CONFIG = {
   // REQUIRED BEFORE GOING LIVE: paste your Razorpay Payment Link/Page URL
   // for THIS BOOK below. Do NOT reuse a link from another product.
   // Create one at: https://dashboard.razorpay.com/app/payment-links
-  BOOK_PAYMENT_URL: "PASTE_RAZORPAY_PAYMENT_LINK_HERE",
+  BOOK_PAYMENT_URL: "https://rzp.io/rzp/xzVp6ZR0",
 
   // Where Razorpay should send the customer after a successful payment.
   // Set this exact URL as the "Redirect URL" / "Success URL" in your
