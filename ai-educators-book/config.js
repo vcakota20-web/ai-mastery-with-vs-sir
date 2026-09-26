@@ -7,7 +7,7 @@ const SITE_CONFIG = {
   PRICE_INR_WAS: 599,
   PRICE_USD: 7.99,
   PRICE_USD_WAS: 12.99,
-  BOOK_PAYMENT_URL: "https://rzp.io/rzp/rsxAyDk",
+  BOOK_PAYMENT_URL: "https://rzp.io/rzp/xzVp6ZR0",
   SUCCESS_URL: "success.html",
   PAYPAL_CLIENT_ID: "PASTE_PAYPAL_CLIENT_ID_HERE",
   PAYPAL_CURRENCY: "USD",
