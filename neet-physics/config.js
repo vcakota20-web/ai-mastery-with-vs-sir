@@ -1,8 +1,8 @@
 /* =====================================================================
-   NEET Physics: 30-Day Rapid Revision (Class 11) — SITE SETTINGS  (edit ONLY the values in this box)
+   NEET + JEE Physics: 30-Day Rapid Revision (Class 11) — SITE SETTINGS  (edit ONLY the values in this box)
    ===================================================================== */
 const SITE_CONFIG = {
-  BOOK_TITLE: "NEET Physics: 30-Day Rapid Revision (Class 11)",
+  BOOK_TITLE: "NEET + JEE Physics: 30-Day Rapid Revision (Class 11)",
   PRICE_REGULAR: 149,      // normal price (shown struck-through)
   PRICE_LAUNCH: 99,        // launch price for each language edition
   LAUNCH_OFFER_ON: true,
