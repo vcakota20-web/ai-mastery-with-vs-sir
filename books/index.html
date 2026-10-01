@@ -18,7 +18,7 @@
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2173221344074914');fbq('track','PageView');</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2173221344074914&ev=PageView&noscript=1"/></noscript>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Fredoka,system-ui,sans-serif;background:radial-gradient(circle at 50% 0%,#1d4b8f,#060b24 60%) fixed;color:#fff;line-height:1.5}
+*{box-sizing:border-box}body{margin:0;font-family:Fredoka,system-ui,sans-serif;background-color:#060b24;background:radial-gradient(circle at 50% 0%,#1d4b8f,#060b24 60%) fixed;color:#fff;line-height:1.5}
 .wrap{max-width:1150px;margin:0 auto;padding:0 18px}
 header{text-align:center;padding:42px 0 18px}
 h1{font-family:Bangers;font-size:clamp(46px,8vw,84px);letter-spacing:2px;margin:0;color:#ffcb3b;text-shadow:4px 4px 0 #b01c5a;line-height:1}
@@ -53,6 +53,28 @@ footer{text-align:center;color:#9fb0e0;font-size:13px;padding:0 0 30px}footer a{
 .pb b{font-family:Bangers;font-size:26px;letter-spacing:.5px;color:#ffc300;display:block;line-height:1}.pb small{display:block;color:#c7d3f5;font-size:13.5px}.pb .pr{font-size:32px;margin-top:4px}
 .pb{min-width:0}.pb>div{min-width:0}
 @media (max-width:760px){.phy{grid-template-columns:minmax(0,1fr);padding:14px;gap:12px}.pb{gap:10px;padding:10px}.pb img.cv{width:62px}.pb img.qr{width:86px;height:86px}.pb b{font-size:22px}.pb .pr{font-size:26px}}
+.jump{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:6px 0 4px}
+.jump a{text-decoration:none;color:#fff;font-weight:600;font-size:15px;padding:8px 18px;border-radius:30px;border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08)}
+.jump a:hover{background:rgba(255,255,255,.18)}
+.sec{margin:34px 0 8px;scroll-margin-top:14px}
+.sechd{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-radius:22px;padding:14px 20px;background:linear-gradient(90deg,var(--s1),var(--s2));color:#fff;box-shadow:0 10px 30px #0006;border:3px solid rgba(255,255,255,.55)}
+.sechd .ic{font-size:40px;line-height:1}.sechd h2{font-family:Bangers;letter-spacing:1px;font-size:clamp(28px,4.4vw,42px);margin:0;line-height:1;text-shadow:3px 3px 0 #0005}
+.sechd p{margin:2px 0 0;font-size:15px;color:#fff;opacity:.95}.sechd .by{margin-left:auto;display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.28);border-radius:40px;padding:5px 16px 5px 5px;font-weight:600;font-size:14px;margin-top:0;color:#fff}
+.sechd .by img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:3px solid #ffcb3b}
+.grid.g2{padding-top:20px}
+.tile{grid-column:span 2;border:3px dashed rgba(255,255,255,.35);border-radius:22px;padding:22px;display:flex;flex-direction:column;justify-content:center;background:rgba(255,255,255,.05)}
+.tile.one{grid-column:span 1}
+.tile h3{font-family:Bangers;letter-spacing:.5px;font-size:30px;margin:0 0 8px;color:#ffcb3b;line-height:1.05}.tile p{margin:0 0 8px;color:#dfe6ff;font-size:16px}
+.road{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px}.road span{background:#fff;color:#0b1446;font-weight:600;border-radius:20px;padding:4px 14px;font-size:15px}.road i{font-style:normal;color:#ffcb3b;font-size:22px}
+.tile img.av{width:84px;height:84px;border-radius:50%;object-fit:cover;border:4px solid #ffcb3b;margin-bottom:10px}
+@media (max-width:980px){.tile,.tile.one{grid-column:span 2}}
+@media (max-width:560px){.tile,.tile.one{grid-column:span 1}.sechd .by{margin-left:0}}
+html{background:#060b24}
+.tile.s3{grid-column:span 3}
+@media (max-width:980px){.tile.s3{grid-column:span 2}}
+@media (max-width:560px){.tile.s3{grid-column:span 1}}
+.ticks{list-style:none;margin:12px 0 0;padding:0}.ticks li{position:relative;padding:3px 0 3px 28px;color:#fff;font-size:16px;font-weight:500}.ticks li:before{content:"✔";position:absolute;left:0;color:#39ff14;font-weight:700}
+.tile h3{font-size:34px}
 </style>
 </head>
 <body>
@@ -72,40 +94,10 @@ footer{text-align:center;color:#9fb0e0;font-size:13px;padding:0 0 30px}footer a{
   <a class="pb" href="../neet-physics/" data-book="Physics Class 11 banner"><img class="cv" src="assets/neet-en.jpg" alt="Class 11 cover"><div><b>CLASS 11</b><small>14 chapters · 365 MCQs · mock test</small><div class="pr">₹99<s>₹149</s></div></div><img class="qr" src="assets/qr-class11.png" alt="QR code – Class 11 book"></a>
   <a class="pb" href="../neet-jee-physics-class12/" data-book="Physics Class 12 banner"><img class="cv" src="assets/neet12-en.jpg" alt="Class 12 cover"><div><b>CLASS 12 · NEW</b><small>14 chapters · 357 MCQs · mock test</small><div class="pr">₹99<s>₹149</s></div></div><img class="qr" src="assets/qr-class12.png" alt="QR code – Class 12 book"></a>
 </section>
-<div class="grid">
-  <article class="card" style="--c:#ffcb3b">
-    <img src="assets/aie.jpg" alt="Practical Guide to AI for Educators cover" loading="lazy">
-    <span class="for">For teachers &amp; coaching faculty</span>
-    <h2>Practical Guide to AI for Educators</h2>
-    <p>Use ChatGPT, Gemini, Claude, NotebookLM, Canva AI &amp; Gamma for lesson plans, question papers and more — 40+ ready prompts.</p>
-    <div class="pr">₹349<s>₹599</s></div><div class="by">by VS Sir · 100 pages</div>
-    <a class="btn" data-book="AI for Educators" href="../ai-educators-book/">VIEW &amp; BUY</a>
-  </article>
-  <article class="card" style="--c:#39e5ff">
-    <img src="assets/es.jpg" alt="Electrostatics e-book cover" loading="lazy">
-    <span class="for">For NEET · JEE Main · JEE Advanced</span>
-    <h2>Electrostatics</h2>
-    <p>50 premium handwritten pages: concepts, formulas and exam-pattern practice for Physics aspirants.</p>
-    <div class="pr">₹49</div><div class="by">by VS Sir · 50 pages</div>
-    <a class="btn" data-book="Electrostatics" href="../electrostatics-ebook.html">VIEW &amp; BUY</a>
-  </article>
-  <article class="card" style="--c:#39ff14">
-    <img src="assets/am.jpg" alt="Automation Mastery cover" loading="lazy">
-    <span class="for">For beginners, creators &amp; professionals</span>
-    <h2>Automation Mastery</h2>
-    <p>Python, JSON, APIs, Git, GitHub and GitHub Actions — learn automation from zero on your phone.</p>
-    <div class="pr">₹99</div><div class="by">by VS Sir · 78 pages</div>
-    <a class="btn" data-book="Automation Mastery" href="https://rzp.io/rzp/SiztcnDu" target="_blank" rel="noopener">BUY NOW</a>
-  </article>
-  <article class="card" style="--c:#ff9ad5">
-    <img src="assets/lua.jpg" alt="LEVEL UP AI comic cover" loading="lazy">
-    <span class="for">For kids 8–14 &amp; parents</span>
-    <h2>LEVEL UP AI: Defeat the Glitch King</h2>
-    <p>A full-colour comic that teaches the internet, algorithms, AI and cyber safety — with a parenting tip on every page.</p>
-    <div class="pr">₹49<s>₹99</s></div><div class="by">by Sushma Ma'am · 100 pages · launch offer</div>
-    <a class="btn" data-book="LEVEL UP AI" href="../level-up-ai/">VIEW &amp; BUY</a>
-    <a class="btn2" href="../level-up-ai/#flip">📖 Flip through all 100 pages</a>
-  </article>
+<nav class="jump" aria-label="Book categories"><a href="#physics">⚛ Physics</a><a href="#ai">🤖 AI &amp; Automation</a><a href="#parents">👨‍👩‍👧 Parents &amp; Kids</a></nav>
+<section class="sec" id="physics" style="--s1:#0b3d91;--s2:#1f6feb">
+  <div class="sechd"><span class="ic">⚛</span><div><h2>PHYSICS · NEET + JEE MAIN</h2><p>Class 11 and Class 12 30-Day Rapid Revision (English &amp; हिंदी) + the Electrostatics booster</p></div><div class="by"><img src="assets/vssir.jpg" alt="VS Sir"><span>VS Sir</span></div></div>
+  <div class="grid g2">
   <article class="card" style="--c:#ff9a3c">
     <span class="new">NEW</span>
     <img src="assets/neet-en.jpg" alt="NEET Physics 30-Day Rapid Revision – English edition cover" loading="lazy">
@@ -142,6 +134,51 @@ footer{text-align:center;color:#9fb0e0;font-size:13px;padding:0 0 30px}footer a{
     <div class="pr">₹99<s>₹149</s></div><div class="by">VS सर · 169 पृष्ठ · Hindi edition</div>
     <a class="btn" data-book="Physics Class 12 HI" href="../neet-jee-physics-class12/?lang=hi">देखें और खरीदें</a>
   </article>
+  <article class="card" style="--c:#39e5ff">
+    <img src="assets/es.jpg" alt="Electrostatics e-book cover" loading="lazy">
+    <span class="for">For NEET · JEE Main · JEE Advanced</span>
+    <h2>Electrostatics</h2>
+    <p>50 premium handwritten pages: concepts, formulas and exam-pattern practice for Physics aspirants.</p>
+    <div class="pr">₹49</div><div class="by">by VS Sir · 50 pages</div>
+    <a class="btn" data-book="Electrostatics" href="../electrostatics-ebook.html">VIEW &amp; BUY</a>
+  </article>
+  <div class="tile s3">
+    <h3>Which physics book first?</h3>
+    <p>Follow the 30-day system – one book for each class, in English and हिंदी medium.</p>
+    <div class="road"><span>Class 11 · 30 days</span><i>→</i><span>Class 12 · 30 days</span><i>→</i><span>Electrostatics booster</span></div>
+    <ul class="ticks"><li>All 14 NCERT chapters in each class book</li><li>Formula boxes, 100+ diagrams and common traps</li><li>350+ NEET/JEE-pattern MCQs with solutions in each book</li><li>Full 45-question mock test and a day-by-day 30-day plan</li><li>Separate English-medium and हिंदी-medium editions · Instant PDF</li></ul>
+  </div>
+  </div>
+</section>
+<section class="sec" id="ai" style="--s1:#0a7d3e;--s2:#12a150">
+  <div class="sechd"><span class="ic">🤖</span><div><h2>AI &amp; AUTOMATION</h2><p>Practical e-books for teachers, creators and beginners</p></div><div class="by"><img src="assets/vssir.jpg" alt="VS Sir"><span>VS Sir</span></div></div>
+  <div class="grid g2">
+  <article class="card" style="--c:#ffcb3b">
+    <img src="assets/aie.jpg" alt="Practical Guide to AI for Educators cover" loading="lazy">
+    <span class="for">For teachers &amp; coaching faculty</span>
+    <h2>Practical Guide to AI for Educators</h2>
+    <p>Use ChatGPT, Gemini, Claude, NotebookLM, Canva AI &amp; Gamma for lesson plans, question papers and more — 40+ ready prompts.</p>
+    <div class="pr">₹349<s>₹599</s></div><div class="by">by VS Sir · 100 pages</div>
+    <a class="btn" data-book="AI for Educators" href="../ai-educators-book/">VIEW &amp; BUY</a>
+  </article>
+  <article class="card" style="--c:#39ff14">
+    <img src="assets/am.jpg" alt="Automation Mastery cover" loading="lazy">
+    <span class="for">For beginners, creators &amp; professionals</span>
+    <h2>Automation Mastery</h2>
+    <p>Python, JSON, APIs, Git, GitHub and GitHub Actions — learn automation from zero on your phone.</p>
+    <div class="pr">₹99</div><div class="by">by VS Sir · 78 pages</div>
+    <a class="btn" data-book="Automation Mastery" href="https://rzp.io/rzp/SiztcnDu" target="_blank" rel="noopener">BUY NOW</a>
+  </article>
+  <div class="tile">
+    <h3>Learn AI &amp; automation on your phone</h3>
+    <p>Prompts, tools and step-by-step projects – for teachers, creators and beginners. No coding background needed.</p>
+    <ul class="ticks"><li>40+ ready prompts for lesson plans, worksheets and tests</li><li>Python, APIs, Git and GitHub Actions from zero</li><li>Made for phones – learn anywhere</li><li>Instant PDF download</li></ul>
+  </div>
+  </div>
+</section>
+<section class="sec" id="parents" style="--s1:#a3185c;--s2:#d6246e">
+  <div class="sechd"><span class="ic">👨‍👩‍👧</span><div><h2>PARENTS &amp; KIDS</h2><p>Screen-smart parenting and a comic adventure for kids 8–14</p></div><div class="by"><img src="assets/sushma.jpg" alt="Sushma Ma'am"><span>Sushma Ma'am</span></div></div>
+  <div class="grid g2">
   <article class="card" style="--c:#ff5fa2">
     <span class="new">NEW</span>
     <img src="assets/mobile-en.jpg" alt="Mobile Addiction in Children – 21-Day Plan – English edition cover" loading="lazy">
@@ -160,7 +197,23 @@ footer{text-align:center;color:#9fb0e0;font-size:13px;padding:0 0 30px}footer a{
     <div class="pr">₹99<s>₹149</s></div><div class="by">सुषमा मैम · 152 पृष्ठ · Hindi edition</div>
     <a class="btn" data-book="Mobile Addiction HI" href="../mobile-addiction-21-days/?lang=hi">देखें और खरीदें</a>
   </article>
-</div>
+  <article class="card" style="--c:#ff9ad5">
+    <img src="assets/lua.jpg" alt="LEVEL UP AI comic cover" loading="lazy">
+    <span class="for">For kids 8–14 &amp; parents</span>
+    <h2>LEVEL UP AI: Defeat the Glitch King</h2>
+    <p>A full-colour comic that teaches the internet, algorithms, AI and cyber safety — with a parenting tip on every page.</p>
+    <div class="pr">₹49<s>₹99</s></div><div class="by">by Sushma Ma'am · 100 pages · launch offer</div>
+    <a class="btn" data-book="LEVEL UP AI" href="../level-up-ai/">VIEW &amp; BUY</a>
+    <a class="btn2" href="../level-up-ai/#flip">📖 Flip through all 100 pages</a>
+  </article>
+  <div class="tile one">
+    <img class="av" src="assets/sushma.jpg" alt="Sushma Ma'am">
+    <h3>Raise happy, screen-smart kids</h3>
+    <p>Child-psychology based guides by Sushma Ma'am.</p>
+    <ul class="ticks"><li>Daily comics and scripts</li><li>Ages 2–16</li><li>English &amp; हिंदी</li></ul>
+  </div>
+  </div>
+</section>
 
 <div class="strip">
   <div><b>Schools &amp; coaching centres</b><br>Bulk / class licences available for all books. Talk to us on WhatsApp.</div>
