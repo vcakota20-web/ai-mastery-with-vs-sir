@@ -10,8 +10,8 @@ const SITE_CONFIG = {
   // ---- RAZORPAY PAYMENT PAGES ----------------------------------------
   // Paste the Razorpay Payment Page link for each option.
   // Redirect after payment:  EN -> success-en-7b4e91c2a5d8.html · HI -> success-hi-7b4e91c2a5d8.html
-  PAY_EN:   "PASTE_RAZORPAY_EN_LINK",
-  PAY_HI:   "PASTE_RAZORPAY_HI_LINK",
+  PAY_EN:   "https://rzp.io/rzp/Kb9txT5I",
+  PAY_HI:   "https://rzp.io/rzp/OyrzFcP",
 
   WHATSAPP_NUMBER: "919602405311",
   EMAIL: "vcakota20@gmail.com",
