@@ -10,7 +10,7 @@ const SITE_CONFIG = {
   // ---- RAZORPAY PAYMENT PAGES ----------------------------------------
   // Paste the Razorpay Payment Page link for each option.
   // Redirect after payment:  EN -> success-en-c9a3e61b7d42.html
-  PAY_EN:   "PASTE_RAZORPAY_ENGLISH_LINK",   // until a real link is pasted, Buy opens a WhatsApp order (nobody gets the book free)
+  PAY_EN:   "https://rzp.io/rzp/L2LjddoK",
 
   WHATSAPP_NUMBER: "919602405311",
   EMAIL: "vcakota20@gmail.com",
