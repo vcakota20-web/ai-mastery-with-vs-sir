@@ -38,6 +38,7 @@ const SITE_CONFIG = {
       el.target = "_blank"; el.rel = "noopener";
       el.addEventListener("click", () => { if (window.fbq) fbq("track", "InitiateCheckout", { value: amt, currency: "INR", content_name: C.BOOK_TITLE + " – " + LBL[k] }); });
     });
+    document.querySelectorAll("[data-sample],[data-lead]").forEach(el => el.addEventListener("click", () => { if (window.fbq) fbq("track", "Lead", { content_name: C.BOOK_TITLE + " – free sample" }); }));
     document.querySelectorAll("[data-wa]").forEach(el => { el.href = wa(el.getAttribute("data-wa") || ("Hello! I have a question about " + C.BOOK_TITLE)); el.target = "_blank"; });
     document.querySelectorAll("[data-email]").forEach(el => { el.href = "mailto:" + C.EMAIL; if (!el.textContent.trim()) el.textContent = C.EMAIL; });
     document.querySelectorAll("[data-wa-text]").forEach(el => el.textContent = "+91 96024 05311");
